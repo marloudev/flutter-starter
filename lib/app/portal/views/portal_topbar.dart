@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class HomeTopbar extends StatefulWidget {
-  const HomeTopbar({super.key});
+class PortalTopbar extends StatefulWidget {
+  const PortalTopbar({super.key});
 
   @override
-  State<HomeTopbar> createState() => _HomeTopbarState();
+  State<PortalTopbar> createState() => _PortalTopbarState();
 }
 
-class _HomeTopbarState extends State<HomeTopbar> {
+class _PortalTopbarState extends State<PortalTopbar> {
   @override
   Widget build(BuildContext context) {
     return Row(

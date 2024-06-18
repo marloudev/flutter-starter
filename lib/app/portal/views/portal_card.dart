@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class HomeCard extends StatefulWidget {
-  const HomeCard({super.key});
+class PortalCard extends StatefulWidget {
+  const PortalCard({super.key});
 
   @override
-  State<HomeCard> createState() => _HomeCardState();
+  State<PortalCard> createState() => _PortalCardState();
 }
 
-class _HomeCardState extends State<HomeCard> {
+class _PortalCardState extends State<PortalCard> {
   @override
   Widget build(BuildContext context) {
     return Card(

@@ -37,7 +37,7 @@ class _LoginFormState extends State<LoginForm> {
                   ),
                 ),
                 onPressed: () {
-                  context.go('/home');
+                  context.go('/portal');
                 },
                 child: const Text('LOGIN')),
           ),

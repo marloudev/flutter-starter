@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class HomeActivities extends StatefulWidget {
-  const HomeActivities({super.key});
+class PortalActivities extends StatefulWidget {
+  const PortalActivities({super.key});
 
   @override
-  State<HomeActivities> createState() => _HomeActivitiesState();
+  State<PortalActivities> createState() => _PortalActivitiesState();
 }
 
-class _HomeActivitiesState extends State<HomeActivities> {
+class _PortalActivitiesState extends State<PortalActivities> {
   @override
   Widget build(BuildContext context) {
     return Padding(
