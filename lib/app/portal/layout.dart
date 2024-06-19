@@ -1,7 +1,6 @@
-import 'package:empireone_mart/app/portal/views/_views.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:empireone_mart/app/portal/views/_views.dart';
 
 class PortalLayout extends StatefulWidget {
   const PortalLayout({super.key});
@@ -11,70 +10,93 @@ class PortalLayout extends StatefulWidget {
 }
 
 class _PortalLayoutState extends State<PortalLayout> {
-  @override
   int _page = 0;
   GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: PortalTopbar(),
-          automaticallyImplyLeading: false,
-        ),
-        // body: const Padding(
-        //   padding: EdgeInsets.all(10),
-        //   child: Column(
-        //     children: [
-        //       HomeCard(),
-        //       HomeActivities()
-        //     ],
-        //   ),
-        // ),
-        bottomNavigationBar: CurvedNavigationBar(
-          key: _bottomNavigationKey,
-          index: 0,
-          items: const <Widget>[
-            Icon(Icons.add, size: 30),
-            Icon(Icons.list, size: 30),
-            Icon(Icons.compare_arrows, size: 30),
-            Icon(Icons.call_split, size: 30),
-          ],
-          color: Colors.blue,
-          buttonBackgroundColor: Colors.blue,
-          backgroundColor: Colors.white,
-          animationCurve: Curves.easeInOut,
-          animationDuration: Duration(milliseconds: 600),
-          onTap: (index) {
-            setState(() {
-              _page = index;
-            });
-          },
-          letIndexChange: (index) => true,
-        ),
-        body: Container(
+      appBar: AppBar(
+        title: PortalTopbar(),
+        automaticallyImplyLeading: false,
+      ),
+      bottomNavigationBar: CurvedNavigationBar(
+        key: _bottomNavigationKey,
+        index: 0,
+        items: const <Widget>[
+          Icon(
+            Icons.home,
+            size: 30,
+            color: Colors.white,
+          ),
+          Icon(
+            Icons.card_giftcard_outlined,
+            size: 30,
+            color: Colors.white,
+          ),
+          Icon(
+            Icons.compare_arrows,
+            size: 30,
+            color: Colors.white,
+          ),
+          Icon(
+            Icons.call_split,
+            size: 30,
+            color: Colors.white,
+          ),
+        ],
+        color: Colors.blue,
+        buttonBackgroundColor: Colors.blue,
+        backgroundColor: Colors.transparent,
+        animationCurve: Curves.easeInOut,
+        animationDuration: Duration(milliseconds: 600),
+        onTap: (index) {
+          setState(() {
+            _page = index;
+          });
+        },
+        letIndexChange: (index) => true,
+      ),
+      body: _getPage(_page),
+    );
+  }
+
+  Widget _getPage(int page) {
+    switch (page) {
+      case 0:
+        return const SingleChildScrollView(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              if (_page == 0) ...[
-                PortalCard(),
-                PortalActivities(),
-              ],
-              if (_page == 1)
-                Text(
-                  _page.toString(),
-                  style: TextStyle(fontSize: 160),
-                ),
-              if (_page == 2)
-                Text(
-                  _page.toString(),
-                  style: TextStyle(fontSize: 160),
-                ),
-              if (_page == 3)
-                Text(
-                  _page.toString(),
-                  style: TextStyle(fontSize: 160),
-                ),
+            children: [
+              HomeCard(),
+              HomeActivities(),
             ],
           ),
-        ));
+        );
+      case 1:
+        return Center(
+          child: RewardPage(),
+        );
+      case 2:
+        return Center(
+          child: Text(
+            'Page $page',
+            style: TextStyle(fontSize: 160),
+          ),
+        );
+      case 3:
+        return Center(
+          child: Text(
+            'Page $page',
+            style: TextStyle(fontSize: 160),
+          ),
+        );
+      default:
+        return Center(
+          child: Text(
+            'Page $page',
+            style: TextStyle(fontSize: 160),
+          ),
+        );
+    }
   }
 }
