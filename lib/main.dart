@@ -1,7 +1,9 @@
-import 'package:empireone_mart/app/portal/portal.dart';
+import 'package:empireone_mart/app/engagement/rewards/id/id.dart';
+import 'package:empireone_mart/app/engagement/engagement.dart';
 import 'package:empireone_mart/app/login/login.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
 void main() => runApp(const MyApp());
 
 /// The route configuration.
@@ -14,11 +16,12 @@ final GoRouter _router = GoRouter(
       },
       routes: <RouteBase>[
         GoRoute(
-          path: 'portal',
+          path: 'engagement',
           builder: (BuildContext context, GoRouterState state) {
-            return const PortalLayout();
+            return const EngagementLayout();
           },
         ),
+        
       ],
     ),
   ],

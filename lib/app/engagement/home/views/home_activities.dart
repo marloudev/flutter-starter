@@ -1,4 +1,4 @@
-import 'package:empireone_mart/app/portal/home/home.dart';
+import 'package:empireone_mart/app/engagement/home/home.dart';
 import 'package:flutter/material.dart';
 
 class HomeActivities extends StatefulWidget {

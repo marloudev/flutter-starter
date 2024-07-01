@@ -1,4 +1,4 @@
-import 'package:empireone_mart/app/portal/home/views/_views.dart';
+import 'package:empireone_mart/app/engagement/home/views/_views.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {

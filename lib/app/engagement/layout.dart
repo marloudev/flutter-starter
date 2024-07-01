@@ -1,15 +1,17 @@
+import 'package:empireone_mart/app/engagement/history/history.dart';
+import 'package:empireone_mart/app/engagement/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:empireone_mart/app/portal/views/_views.dart';
+import 'package:empireone_mart/app/engagement/views/_views.dart';
 
-class PortalLayout extends StatefulWidget {
-  const PortalLayout({super.key});
+class EngagementLayout extends StatefulWidget {
+  const EngagementLayout({super.key});
 
   @override
-  State<PortalLayout> createState() => _PortalLayoutState();
+  State<EngagementLayout> createState() => _EngagementLayoutState();
 }
 
-class _PortalLayoutState extends State<PortalLayout> {
+class _EngagementLayoutState extends State<EngagementLayout> {
   int _page = 0;
   GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
 
@@ -17,7 +19,7 @@ class _PortalLayoutState extends State<PortalLayout> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: PortalTopbar(),
+        title: EngagementTopbar(),
         automaticallyImplyLeading: false,
       ),
       bottomNavigationBar: CurvedNavigationBar(
@@ -35,12 +37,12 @@ class _PortalLayoutState extends State<PortalLayout> {
             color: Colors.white,
           ),
           Icon(
-            Icons.compare_arrows,
+            Icons.history,
             size: 30,
             color: Colors.white,
           ),
           Icon(
-            Icons.call_split,
+            Icons.settings,
             size: 30,
             color: Colors.white,
           ),
@@ -57,31 +59,25 @@ class _PortalLayoutState extends State<PortalLayout> {
         },
         letIndexChange: (index) => true,
       ),
-      body: _getPage(_page),
+      body: SingleChildScrollView(
+        child: _getPage(_page),
+      ),
     );
   }
 
   Widget _getPage(int page) {
     switch (page) {
       case 0:
-        return const SingleChildScrollView(
-          child: Column(
-            children: [
-              HomeCard(),
-              HomeActivities(),
-            ],
-          ),
+        return const Center(
+          child: HomePage(),
         );
       case 1:
-        return Center(
+        return const Center(
           child: RewardPage(),
         );
       case 2:
-        return Center(
-          child: Text(
-            'Page $page',
-            style: TextStyle(fontSize: 160),
-          ),
+        return const Center(
+          child: HistoryViewPage(),
         );
       case 3:
         return Center(

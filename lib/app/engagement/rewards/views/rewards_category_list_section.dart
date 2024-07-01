@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class RewardCategoryList extends StatefulWidget {
+class RewardsCategoryListSection extends StatefulWidget {
   final String image;
   final String label;
-  const RewardCategoryList(
+  const RewardsCategoryListSection(
       {super.key, required this.image, required this.label});
 
   @override
-  State<RewardCategoryList> createState() => _RewardCategoryListState();
+  State<RewardsCategoryListSection> createState() => _RewardsCategoryListSectionState();
 }
 
-class _RewardCategoryListState extends State<RewardCategoryList> {
+class _RewardsCategoryListSectionState extends State<RewardsCategoryListSection> {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -27,8 +27,9 @@ class _RewardCategoryListState extends State<RewardCategoryList> {
               ),
               Text(
                 widget.label,
-                style: TextStyle(fontSize: 11,
-                fontWeight: FontWeight.w600
+                style: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w800,
                 ),
               )
             ],

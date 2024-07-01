@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class PortalTopbar extends StatefulWidget {
-  const PortalTopbar({super.key});
+class EngagementTopbar extends StatefulWidget {
+  const EngagementTopbar({super.key});
 
   @override
-  State<PortalTopbar> createState() => _PortalTopbarState();
+  State<EngagementTopbar> createState() => _EngagementTopbarState();
 }
 
-class _PortalTopbarState extends State<PortalTopbar> {
+class _EngagementTopbarState extends State<EngagementTopbar> {
   @override
   Widget build(BuildContext context) {
     return Row(

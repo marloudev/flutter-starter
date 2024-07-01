@@ -1,7 +1,5 @@
-import 'package:empireone_mart/app/portal/rewards/views/reward_category_list.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:empireone_mart/app/engagement/views/_views.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class RewardsCategories extends StatefulWidget {
   const RewardsCategories({super.key});
@@ -41,23 +39,26 @@ class _RewardsCategoriesState extends State<RewardsCategories> {
           ),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                RewardCategoryList(
-                    image: 'assets/images/categories/beauty.png',
-                    label: 'FOODS'),
-                RewardCategoryList(
-                    image: 'assets/images/categories/fashion.png',
-                    label: 'FASHION'),
-                RewardCategoryList(
-                    image: 'assets/images/categories/beauty.png',
-                    label: 'BEAUTY'),
-                RewardCategoryList(
-                    image: 'assets/images/categories/grocery.png',
-                    label: 'GROCERY'),
-                RewardCategoryList(
-                    image: 'assets/images/categories/gc.png', label: 'Gift Check'),
-              ],
+            child: SizedBox(
+              child: Row(
+                children: [
+                  RewardsCategoryListSection(
+                      image: 'assets/images/categories/food.png',
+                      label: 'FOODS'),
+                  RewardsCategoryListSection(
+                      image: 'assets/images/categories/fashion.png',
+                      label: 'FASHION'),
+                  RewardsCategoryListSection(
+                      image: 'assets/images/categories/beauty.png',
+                      label: 'BEAUTY'),
+                  RewardsCategoryListSection(
+                      image: 'assets/images/categories/grocery.png',
+                      label: 'GROCERY'),
+                  RewardsCategoryListSection(
+                      image: 'assets/images/categories/gc.png',
+                      label: 'Gift Check'),
+                ],
+              ),
             ),
           ),
         ],

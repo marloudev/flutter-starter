@@ -1,5 +1,5 @@
 import 'package:empireone_mart/app/login/views/sample.dart';
-import 'package:empireone_mart/app/portal/views/_views.dart';
+import 'package:empireone_mart/app/engagement/views/_views.dart';
 import 'package:flutter/material.dart';
 
 class RewardPage extends StatefulWidget {
@@ -26,7 +26,8 @@ class _RewardPageState extends State<RewardPage> {
                 height: 12,
               ),
               RewardsCategories(),
-              Sample()
+              // Sample()
+              RewardsProductsSection()
             ],
           ),
         )
