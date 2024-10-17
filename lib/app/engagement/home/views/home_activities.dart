@@ -1,8 +1,10 @@
 import 'package:empireone_mart/app/engagement/home/home.dart';
+import 'package:empireone_mart/app/engagement/home/model/home_model.dart';
 import 'package:flutter/material.dart';
 
 class HomeActivities extends StatefulWidget {
-  const HomeActivities({super.key});
+  final List activities;
+  const HomeActivities({super.key, required this.activities});
 
   @override
   State<HomeActivities> createState() => _HomeActivitiesState();
@@ -29,15 +31,9 @@ class _HomeActivitiesState extends State<HomeActivities> {
             ],
           ),
           Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              HomeRewardList(),
-              HomeRewardList(),
-              HomeRewardList(),
-              HomeRewardList(),
-              HomeRewardList(),
-              HomeRewardList(),
-            ],
+            children: widget.activities.map((activity) {
+              return HomeRewardList(); // Create a widget for each activity
+            }).toList(), // Convert the iterable into a list
           ),
         ],
       ),

@@ -1,7 +1,10 @@
+import 'package:empireone_mart/app/engagement/home/bloc/home_bloc.dart';
 import 'package:empireone_mart/app/engagement/rewards/id/id.dart';
 import 'package:empireone_mart/app/engagement/engagement.dart';
 import 'package:empireone_mart/app/login/login.dart';
+import 'package:empireone_mart/repository/post_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 void main() => runApp(const MyApp());
@@ -12,16 +15,33 @@ final GoRouter _router = GoRouter(
     GoRoute(
       path: '/',
       builder: (BuildContext context, GoRouterState state) {
-        return const LoginViewPage();
+        return BlocProvider(
+          create: (context) => HomeBloc(
+            HomeRepository(),
+          )
+          // ..add(
+          //     fetchPosts(),
+          //   )
+            ,
+          child: LoginViewPage(),
+        );
       },
       routes: <RouteBase>[
         GoRoute(
           path: 'engagement',
           builder: (BuildContext context, GoRouterState state) {
-            return const EngagementLayout();
+            return BlocProvider(
+              create: (context) => HomeBloc(
+                HomeRepository(),
+              )
+              ..add(
+                  fetchPosts(),
+                )
+                ,
+              child: EngagementLayout(),
+            );
           },
         ),
-        
       ],
     ),
   ],
@@ -35,46 +55,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
       routerConfig: _router,
     );
   }
 }
 
-/// The home screen
-class HomeScreen extends StatelessWidget {
-  /// Constructs a [HomeScreen]
-  const HomeScreen({super.key});
+class ThemeCubit extends Cubit<ThemeData> {
+  /// {@macro brightness_cubit}
+  ThemeCubit() : super(_lightTheme);
+  static final _lightTheme = ThemeData.light();
+  static final _darkTheme = ThemeData.dark();
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Home Screen')),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () => context.go('/details'),
-          child: const Text('Go to the Details screen'),
-        ),
-      ),
-    );
-  }
-}
-
-/// The details screen
-class DetailsScreen extends StatelessWidget {
-  /// Constructs a [DetailsScreen]
-  const DetailsScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Details Screen')),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () => context.go('/'),
-          child: const Text('Go back to the Home screen'),
-        ),
-      ),
-    );
+  /// Toggles the current brightness between light and dark.
+  void toggleTheme() {
+    emit(state.brightness == Brightness.dark ? _lightTheme : _darkTheme);
   }
 }
