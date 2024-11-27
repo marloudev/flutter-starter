@@ -19,9 +19,6 @@ final GoRouter _router = GoRouter(
           create: (context) => HomeBloc(
             HomeRepository(),
           )
-          // ..add(
-          //     fetchPosts(),
-          //   )
             ,
           child: LoginViewPage(),
         );
