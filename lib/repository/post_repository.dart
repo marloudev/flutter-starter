@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:empireone_mart/app/engagement/home/model/home_model.dart';
+import 'package:empireone_mart/app/model/home_model.dart';
 import 'package:http/http.dart' as http;
 
 class HomeRepository {

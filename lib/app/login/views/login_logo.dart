@@ -13,13 +13,16 @@ class _LoginLogoState extends State<LoginLogo> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.asset('assets/images/logo.png'),
+        Image.asset(
+          'assets/images/logo.jpg',
+          width: 100,
+        ),
         const Text(
-          'MART',
+          'Science Quest',
           style: TextStyle(
             color: Colors.blue,
-            fontSize: 50,
-            fontWeight: FontWeight.w800,
+            fontSize: 32,
+            fontWeight: FontWeight.w700,
           ),
         )
       ],

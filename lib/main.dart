@@ -1,8 +1,7 @@
-import 'package:empireone_mart/app/engagement/home/bloc/home_bloc.dart';
-import 'package:empireone_mart/app/engagement/rewards/id/id.dart';
-import 'package:empireone_mart/app/engagement/engagement.dart';
 import 'package:empireone_mart/app/login/login.dart';
-import 'package:empireone_mart/repository/post_repository.dart';
+import 'package:empireone_mart/app/portal/home/bloc/home_bloc.dart';
+import 'package:empireone_mart/app/portal/layout.dart';
+import 'package:empireone_mart/repository/module_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -17,25 +16,22 @@ final GoRouter _router = GoRouter(
       builder: (BuildContext context, GoRouterState state) {
         return BlocProvider(
           create: (context) => HomeBloc(
-            HomeRepository(),
-          )
-            ,
+            ModuleRepository(),
+          ),
           child: LoginViewPage(),
         );
       },
       routes: <RouteBase>[
         GoRoute(
-          path: 'engagement',
+          path: 'portal',
           builder: (BuildContext context, GoRouterState state) {
             return BlocProvider(
               create: (context) => HomeBloc(
-                HomeRepository(),
-              )
-              ..add(
-                  fetchPosts(),
-                )
-                ,
-              child: EngagementLayout(),
+                ModuleRepository(),
+              )..add(
+                  fetchModules(),
+                ),
+              child: PortalLayout(),
             );
           },
         ),

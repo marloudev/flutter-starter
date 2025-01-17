@@ -2,32 +2,43 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class AuthRepository {
-  final String apiUrl = "https://empireone-finance.com/login";
+  final String apiUrl = "http://192.168.115.184:8000/api/auth/login";
 
-  Future<List<dynamic>> authLogin(String email, String password) async {
+  Future<Map<String, dynamic>> authLogin(String email, String password) async {
     try {
-      Map<String, String> body = {
+      // Prepare the request body
+      final Map<String, String> body = {
         "email": email,
         "password": password,
       };
+
+      // Make the POST request
       final response = await http.post(
         Uri.parse(apiUrl),
         headers: {
           "Content-Type": "application/json",
+          "Accept": "application/json",
         },
         body: json.encode(body),
       );
 
-      // print('success${response.statusCode}');
+      // Handle the response
       if (response.statusCode == 200) {
-        return json.decode(response.body);
+        final decodedResponse = json.decode(response.body);
+        if (decodedResponse is Map<String, dynamic>) {
+          return decodedResponse;
+        } else {
+          print('Unexpected response format: ${decodedResponse.runtimeType}');
+          return {};
+        }
       } else {
         print('Failed to authenticate. Status code: ${response.statusCode}');
-        return [];
+        return {};
       }
     } catch (e) {
-      print('An error occurred: $e');
-      return [];
+      // Handle any errors
+      print('An error occurred during authentication: $e');
+      return {};
     }
   }
 }
