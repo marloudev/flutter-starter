@@ -1,5 +1,6 @@
 import 'package:empireone_mart/app/login/login.dart';
 import 'package:empireone_mart/app/portal/home/bloc/home_bloc.dart';
+import 'package:empireone_mart/app/portal/home/quest/views/_views.dart';
 import 'package:empireone_mart/app/portal/layout.dart';
 import 'package:empireone_mart/repository/module_repository.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +36,19 @@ final GoRouter _router = GoRouter(
             );
           },
         ),
+        GoRoute(
+          path: '/quest/:id',
+          builder: (BuildContext context, GoRouterState state) {
+            final String id = state.pathParameters['id']!;
+            return BlocProvider(
+              create: (context) => ModuleBlocById(ModuleRepository(), id)
+                ..add(
+                  getModuleById(),
+                ),
+              child: QuestPage(id: id),
+            );
+          },
+        )
       ],
     ),
   ],

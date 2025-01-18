@@ -18,4 +18,20 @@ class ModuleRepository {
       return [];
     }
   }
+
+  Future getModuleById(String id) async {
+    final response = await http.get(Uri.parse('${apiUrl}/${id}'));
+    if (response.statusCode == 200) {
+      final jsonResponse = json.decode(response.body)['data'];
+      if (jsonResponse != null) {
+        return ModuleModel.fromJson(json.encode(jsonResponse));
+      } else {
+        print('No data found');
+        return null; // Return null if no data found
+      }
+    } else {
+      print('Failed to load response. Status code: ${response.statusCode}');
+      return null;
+    }
+  }
 }

@@ -20,3 +20,25 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     });
   }
 }
+
+class ModuleBlocById extends Bloc<HomeEvent, HomeState> {
+  final ModuleRepository _moduleRepository;
+
+  ModuleBlocById(this._moduleRepository, final id) : super(HomeInitial()) {
+    on<HomeEvent>((event, emit) async {
+      try {
+        emit(HomeLoading(message: 'Loading...'));
+        final response = await _moduleRepository.getModuleById(id);
+
+        if (response != null) {
+          emit(HomeLoadedId(modules: response));
+        } else {
+          emit(HomeError(message: 'Module not found!'));
+        }
+      } catch (e) {
+        print('Error fetching module: $e');
+        emit(HomeError(message: 'Something went wrong!'));
+      }
+    });
+  }
+}

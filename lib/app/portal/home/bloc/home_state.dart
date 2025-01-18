@@ -13,8 +13,12 @@ class HomeLoading extends HomeState {
 
 class HomeLoaded extends HomeState {
   final List<ModuleModel> modules;
-
   HomeLoaded({required this.modules});
+}
+
+class HomeLoadedId extends HomeState {
+  final ModuleModel modules;
+  HomeLoadedId({required this.modules});
 }
 
 class HomeError extends HomeState {
