@@ -41,12 +41,12 @@ class _HomeCardState extends State<HomeCard> {
                     child: Row(
                       children: [
                         Image.asset(
-                          'assets/images/e.png',
+                          'assets/images/logo.jpg',
                           width: 80, // Adjust width as needed
                           height: 80, // Adjust height as needed
                         ),
                         Text(
-                          '1650 PTS',
+                          '1650 Score',
                           style: TextStyle(
                               fontSize: 40,
                               fontWeight: FontWeight.w700,

@@ -14,7 +14,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: BlocBuilder<HomeBloc, HomeState>(
+      child: BlocBuilder<ModuleBlocByQuarter, HomeState>(
         builder: (context, state) {
           if (state is HomeInitial || state is HomeLoading) {
             return const SizedBox(
@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
           } else if (state is HomeLoaded) {
             return Column(
               children: [
-                const HomeCard(),
+                // const HomeCard(),
                 HomeActivities(modules: state.modules),
               ],
             );

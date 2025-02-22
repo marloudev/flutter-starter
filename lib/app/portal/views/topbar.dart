@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Topbar extends StatefulWidget {
   const Topbar({super.key});
@@ -8,39 +9,44 @@ class Topbar extends StatefulWidget {
 }
 
 class _TopbarState extends State<Topbar> {
+  String name = 'Loading...'; // Default value until the name is fetched
+
+  // Function to get the name from SharedPreferences
+  void get_name() async {
+    final prefs = await SharedPreferences.getInstance();
+    final storedName = prefs.getString('name') ??
+        'Guest'; // Default to 'Guest' if no name is found
+    setState(() {
+      name = storedName; // Update the state with the fetched name
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    get_name(); // Fetch the name when the widget is initialized
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment
-          .spaceBetween, // Align Row contents to the start (left)
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Column(
-          crossAxisAlignment: CrossAxisAlignment
-              .start, // Align Column contents to the start (left)
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'HI ALLEN!',
-              style: TextStyle(
+              name.isNotEmpty
+                  ? '${name[0].toUpperCase()}${name.substring(1)}'
+                  : '',
+              style: const TextStyle(
                 fontSize: 25,
+                fontFamily: 'JollyFont',
                 color: Colors.blue,
                 fontWeight: FontWeight.w900,
               ),
             ),
-            Text(
-              'Embrace Rewards, seize success!',
-              style: TextStyle(
-                fontSize: 12,
-                color: Colors.grey,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
           ],
-        ),
-        const SizedBox(
-            width: 10), // Optional: Add some spacing between Column and Image
-        Image.asset(
-          'assets/images/profile.png',
-          width: 50,
         ),
       ],
     );

@@ -38,11 +38,35 @@ dependencies:
   flutter_bloc: ^9.0.0
   http: ^1.2.2
   localstorage: ^5.0.0
+  html: ^0.15.5
+  url_launcher: ^6.3.1
+  shared_preferences: ^2.4.0
+  audioplayers: ^6.1.0
+  video_player: ^2.9.2
+  flutter_tts: ^4.2.2
+  webview_flutter: ^4.10.0
+  flutter_launcher_icons: ^0.14.3
+  flutter_native_splash: ^2.4.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+    
+flutter_native_splash:
+  color: "#ffffff"  # Background color of the splash screen
+  image: "assets/icon/logo.jpg"  # Path to your splash image
+  android: true
+  ios: true
+  android_12:
+    image: "assets/icon/logo.jpg"
+    icon_background_color: "#ffffff"
 
+flutter_icons:
+  android: true
+  ios: true
+  image_path:  "assets/icon/logo.jpg" 
+  adaptive_icon_background: "#ffffff" 
+  adaptive_icon_foreground:  "assets/icon/logo.jpg" 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
@@ -72,6 +96,12 @@ flutter:
     - assets/images/categories/food.png
     - assets/images/categories/gc.png
     - assets/images/categories/grocery.png
+    - assets/gif/bg.gif
+    - assets/gif/score.gif
+    - assets/audio/bg_music.mp3
+    - assets/audio/tap_music.mp3
+    - assets/videos/bg_video.mp4
+    - assets/gif/board.gif
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -85,10 +115,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: JollyFont
+      fonts:
+        - asset: assets/fonts/QueenofCamelot.otf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

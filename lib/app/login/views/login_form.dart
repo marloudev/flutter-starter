@@ -1,7 +1,7 @@
 import 'package:empireone_mart/repository/auth_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:localstorage/localstorage.dart'; // Add this import
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -36,7 +36,11 @@ class _LoginFormState extends State<LoginForm> {
       _isLoading = false; // Stop loading
       if (response['status'] == 'success') {
         notify = '';
-        _storeToken(response['data']['token']); // Store token in local storage
+        _storeUserID(response['data']['user']['id']
+            .toString()); // Store token in local storage
+        _nameToken(
+            '${response['data']['user']['fname']} ${response['data']['user']['lname']}');
+        _storeToken(response['data']['token'].toString());
         context.go('/portal');
       } else {
         notify = 'Login failed. Please check your credentials.';
@@ -45,13 +49,19 @@ class _LoginFormState extends State<LoginForm> {
   }
 
   // Method to store the token in local storage
-  void _storeToken(String token) async {
-    localStorage.setItem('token', token);
+  void _storeUserID(String value) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('user_id', value);
   }
 
-  // Method to get the token from local storage
-  Future<String?> _getToken() async {
-    // return await localStorage.getItem('token'); // Retrieve token
+  void _storeToken(String value) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('token', value);
+  }
+
+  void _nameToken(String value) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('name', value);
   }
 
   @override
@@ -74,11 +84,11 @@ class _LoginFormState extends State<LoginForm> {
               controller: _employeeIdController,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
-                hintText: 'Employee ID',
+                hintText: 'Email',
               ),
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter your Employee ID';
+                  return 'Please enter your Email';
                 }
                 return null;
               },
@@ -121,7 +131,14 @@ class _LoginFormState extends State<LoginForm> {
                     ? const CircularProgressIndicator(
                         valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
                       ) // Show loading spinner
-                    : const Text('LOGIN'),
+                    : const Text(
+                        'LOGIN',
+                        style: TextStyle(
+                          fontFamily: 'JollyFont',
+                          fontSize: 32,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
               ),
             ),
           ],

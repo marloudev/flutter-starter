@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ffi';
 
 class ModuleModel {
   final int id;
@@ -6,13 +7,20 @@ class ModuleModel {
   final String grade;
   final String wintn;
   final String introductory;
+  final String quarter;
+  final Object exam_type;
+  final lessons;
 
-  ModuleModel(
-      {required this.id,
-      required this.title,
-      required this.grade,
-      required this.wintn,
-      required this.introductory});
+  ModuleModel({
+    required this.id,
+    required this.title,
+    required this.grade,
+    required this.wintn,
+    required this.introductory,
+    required this.quarter,
+    required this.exam_type,
+    required this.lessons,
+  });
 
   Map<String, dynamic> toMap() {
     return {
@@ -21,6 +29,8 @@ class ModuleModel {
       'grade': grade,
       'introductory': introductory,
       'wintn': wintn,
+      'quarter': quarter,
+      'lessons': lessons,
     };
   }
 
@@ -31,6 +41,9 @@ class ModuleModel {
       grade: map['grade'] ?? '',
       introductory: map['introductory'] ?? '',
       wintn: map['wintn'] ?? '',
+      quarter: map['quarter'] ?? '',
+      exam_type: map['exam_type'] ?? {},
+      lessons: map['lessons'] ?? [],
     );
   }
 

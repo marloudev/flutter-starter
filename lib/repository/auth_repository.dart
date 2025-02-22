@@ -1,8 +1,10 @@
 import 'dart:convert';
+import 'package:empireone_mart/repository/endpoint.dart';
 import 'package:http/http.dart' as http;
 
 class AuthRepository {
-  final String apiUrl = "http://192.168.115.184:8000/api/auth/login";
+  // 192.168.10.43
+  final String endPoint = "${apiUrl}/api/auth/login";
 
   Future<Map<String, dynamic>> authLogin(String email, String password) async {
     try {
@@ -14,7 +16,7 @@ class AuthRepository {
 
       // Make the POST request
       final response = await http.post(
-        Uri.parse(apiUrl),
+        Uri.parse(endPoint),
         headers: {
           "Content-Type": "application/json",
           "Accept": "application/json",
@@ -22,6 +24,7 @@ class AuthRepository {
         body: json.encode(body),
       );
 
+      print('bodybody${response.statusCode}');
       // Handle the response
       if (response.statusCode == 200) {
         final decodedResponse = json.decode(response.body);

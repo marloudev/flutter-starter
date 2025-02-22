@@ -21,6 +21,7 @@ class _LoginLogoState extends State<LoginLogo> {
           'Science Quest',
           style: TextStyle(
             color: Colors.blue,
+            fontFamily: 'JollyFont',
             fontSize: 32,
             fontWeight: FontWeight.w700,
           ),

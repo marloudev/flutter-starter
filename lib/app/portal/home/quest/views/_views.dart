@@ -1,1 +1,13 @@
 export '_page.dart';
+export 'fill_in_the_blank.dart';
+export 'identification.dart';
+export 'matching.dart';
+export 'multiple_choice.dart';
+export 'true_or_false.dart';
+export 'introductory.dart';
+export 'wintn.dart';
+export 'lesson.dart';
+export 'lesson_information.dart';
+export 'pre_exercise.dart';
+export 'quest.dart';
+export 'questions.dart';

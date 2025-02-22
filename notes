@@ -1,0 +1,6 @@
+ Colors.lightBlue,
+                      Colors.blue,
+                      
+                        fontFamily: 'JollyFont',
+
+                               color: const Color.fromARGB(221, 56, 54, 54),

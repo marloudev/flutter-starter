@@ -23,7 +23,8 @@ class _HomeActivitiesState extends State<HomeActivities> {
                 'Modules',
                 style: TextStyle(
                   fontWeight: FontWeight.w800,
-                  color: Colors.blue[700],
+                  color: Colors.lightBlue,
+                  fontFamily: 'JollyFont',
                   fontSize: 20,
                 ),
               ),
@@ -31,6 +32,7 @@ class _HomeActivitiesState extends State<HomeActivities> {
           ),
           Column(
             children: widget.modules.map((module) {
+              print('modulesmodules,${module}');
               return HomeRewardList(
                   module: module); // Create a widget for each activity
             }).toList(), // Convert the iterable into a list

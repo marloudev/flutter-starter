@@ -17,12 +17,16 @@ class HomeLoaded extends HomeState {
 }
 
 class HomeLoadedId extends HomeState {
-  final ModuleModel modules;
+  final modules;
   HomeLoadedId({required this.modules});
+}
+
+class GetScoreLoaded extends HomeState {
+  final modules;
+  GetScoreLoaded({required this.modules});
 }
 
 class HomeError extends HomeState {
   final String message;
-
   HomeError({required this.message});
 }
