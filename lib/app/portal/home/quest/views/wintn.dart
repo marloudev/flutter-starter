@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:html/parser.dart' as html_parser;
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:flutter_html/flutter_html.dart';
 
 class Wintn extends StatefulWidget {
   final data;
@@ -69,11 +70,26 @@ class _WintnState extends State<Wintn> {
                     child: Column(
                       children: [
                         const SizedBox(height: 20),
-                        Text(
-                          direction,
-                          style: TextStyle(
-                              fontFamily: 'JollyFont', color: Colors.white),
-                        ),
+                        // Text(
+                        //   direction,
+                        //   style: TextStyle(
+                        //       fontFamily: 'JollyFont', color: Colors.white),
+                        // ),
+                        Html(
+                          data: widget.data.wintn,
+                          style: {
+                            "body": Style(
+                              color: Colors.white, // Set text color to white
+                              fontWeight: FontWeight.bold,
+                              textAlign: TextAlign.center,
+                            ),
+                            "p": Style(
+                              textAlign:
+                                  TextAlign.justify, // Justify paragraph text
+                              color: Colors.white,
+                            ),
+                          },
+                        )
                       ],
                     ),
                   ),

@@ -8,6 +8,7 @@ import 'package:go_router/go_router.dart';
 import 'package:html/parser.dart' as html_parser;
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_html/flutter_html.dart';
 
 class LessonInformation extends StatefulWidget {
   final Map<String, dynamic> data;
@@ -165,11 +166,20 @@ class _LessonInformationState extends State<LessonInformation> {
                               )
                             : Container(),
                         const SizedBox(height: 20),
-                        Text(
-                          discussion,
-                          style: TextStyle(
-                              fontFamily: 'JollyFont', color: Colors.white),
-                        ),
+                        // Text(
+                        //   discussion,
+                        //   style: TextStyle(
+                        //       fontFamily: 'JollyFont', color: Colors.white),
+                        // ),
+                        Html(
+                          data: widget.data['discussion'],
+                          style: {
+                            "body": Style(
+                              color: Colors.white, // Set text color to white
+                              fontWeight: FontWeight.bold,
+                            ),
+                          },
+                        )
                       ],
                     ),
                   ),
